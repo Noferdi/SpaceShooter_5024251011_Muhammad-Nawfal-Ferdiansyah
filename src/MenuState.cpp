@@ -2,7 +2,7 @@
 #include "include/Audio.hpp"
 
 MenuState::MenuState() : State("Menu"), next_state(""), blink_timer(0), blink_visible(true) {
-    // Muat background (hanya layer void yang dipakai di menu)
+    // Muat background 
     this->bg.load();
 
     audio.playAudio("bgm");
