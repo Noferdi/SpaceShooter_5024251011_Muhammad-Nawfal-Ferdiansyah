@@ -10,8 +10,7 @@ Enemy::Enemy(int Health_point, int Attack_point, string enemy_type)
     : Ship(Health_point, Attack_point), Bullet(nullptr) {
     this->enemy_type        = enemy_type;
     this->base_health_point = static_cast<float>(Health_point);
-    this->shoot_cooldown    = 120;  // tembak tiap ~120 frame
-    // Stagger tembakan pertama 0–60 frame agar tidak serentak
+    this->shoot_cooldown    = 120;  // tembak tiap
     this->shoot_timer       = rand() % 60;
 }
 
@@ -46,13 +45,13 @@ void Enemy::move() {
 }
 
 // Spawn torpedo ke kiri bila cooldown sudah selesai
-// torpedoTexPath: path Torpedo.png (sprite sheet 33x32, 3 frame masing-masing 11x32)
+// path Torpedo.png (sprite sheet 33x32, 3 frame masing-masing 11x32)
 void Enemy::Attack(const string& torpedoTexPath) {
     if (this->shoot_timer < this->shoot_cooldown) return;
 
     this->shoot_timer = 0; // reset cooldown
 
-    // Torpedo: speed -5 (ke kiri), rotasi 270° (nozzle ke kiri)
+    // Torpedo: speed -5 (ke kiri), rotasi 270° 
     // fcount=3 karena Torpedo.png punya 3 frame animasi
     // fw=11 karena lebar tiap frame adalah 11px (33px total / 3 frame)
     // fh=32 karena tinggi frame adalah 32px
@@ -106,7 +105,7 @@ void Enemy::takeDamage(int damage) {
     Ship::takeDamage(damage); // panggil implementasi Ship
 }
 
-// True bila kapal sudah melewati tepi kiri layar (perlu dihapus)
+// True bila kapal sudah melewati tepi kiri layar
 bool Enemy::isOffScreen() {
     return this->enemy_shape.getPosition().x < -80.f;
 }
