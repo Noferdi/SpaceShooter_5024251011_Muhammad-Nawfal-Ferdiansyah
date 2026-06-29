@@ -63,13 +63,7 @@ Bullet& Bullet::operator=(const Bullet& other) {
 
 Sprite& Bullet::setShape(const string& texturePath, float spd, float rotation,
                          int   fcount, int   fw, int   fh) {
-    // Inisialisasi tampilan bullet saat di-spawn:
-    //   texturePath : path file gambar
-    //   spd         : kecepatan (+7 ke kanan untuk player, -5 ke kiri untuk enemy)
-    //   rotation    : 90° untuk player (nozzle atas→kanan), 270° untuk enemy (nozzle atas→kiri)
-    //   fcount      : jumlah frame animasi (selalu 3 untuk bullet.png dan Torpedo.png)
-    //   fw          : lebar satu frame pixel (32 untuk player bullet, 11 untuk torpedo)
-    //   fh          : tinggi satu frame pixel (32 untuk keduanya)
+
     this->bullet_shape   = Sprite();
     this->texture_path   = texturePath;
     this->frame_count    = fcount;
@@ -99,7 +93,7 @@ Sprite& Bullet::getShape() {
     return this->bullet_shape;
 }
 
-// Gerakkan bullet sejauh speed px per frame (tanpa dt)
+// Gerakkan bullet sejauh speed px per frame
 void Bullet::move() {
     if (!this->active) return;
     this->bullet_shape.move(this->speed, 0.f);
@@ -149,9 +143,6 @@ bool Bullet::collision(const FloatRect& other_bounds) {
     }
     return false;
 }
-
-// Cek tumbukan dengan Sprite lain; nonaktifkan dan pindah off-screen bila kena
-// Overload: cek tumbukan dengan FloatRect (dari getBounds() enemy/player)
 
 bool Bullet::isActive() const { return this->active; }
 
