@@ -4,10 +4,10 @@
 using namespace std;
 using namespace sf;
 
-// Definisi konstanta statis; kecepatan dalam px/frame (bukan px/detik)
+// Definisi konstanta statis; kecepatan dalam px/frame
 const float Backgrounds::SCALE       = 1.5f;
-const float Backgrounds::SPEED_VOID  = 0.5f;  // ~30px/detik di 60fps
-const float Backgrounds::SPEED_STARS = 1.2f;  // ~72px/detik di 60fps
+const float Backgrounds::SPEED_VOID  = 0.5f;  
+const float Backgrounds::SPEED_STARS = 1.2f; 
 
 Backgrounds::Backgrounds() {
     this->scroll_void  = 0.f;
@@ -50,7 +50,7 @@ bool Backgrounds::load() {
 }
 
 // Update scroll Layer 01 saja (dipakai Menu dan GameOver)
-// Dipanggil tiap frame; kecepatan dalam px/frame (bukan px/detik)
+// Dipanggil tiap frame; kecepatan dalam px/frame 
 void Backgrounds::updateMenuLayer() {
     float w1 = this->layer1a.getGlobalBounds().width;
 
