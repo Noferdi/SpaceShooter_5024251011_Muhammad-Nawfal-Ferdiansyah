@@ -9,25 +9,11 @@
 #include <cstdlib>   // srand, rand
 #include <ctime>     // time
 
-// ---------------------------------------------------------------
-// Game::run() – game loop utama dengan state machine
-//
-// Alur transisi state:
-//   MenuState → GameState → GameOverState → MenuState (loop)
-//
-// Tiap state mengembalikan string dari getNextState():
-//   ""         = tetap di state ini
-//   "Game"     = pindah ke GameState
-//   "GameOver" = pindah ke GameOverState (bawa skor)
-//   "Menu"     = pindah ke MenuState
-//   "Quit"     = tutup window
-// ---------------------------------------------------------------
 
-// Konstruktor: buat window 960x540 dengan limit 60fps
 Game::Game() : window(VideoMode(960, 540), "Space Shooter", Style::Close | Style::Titlebar) {}
 
 void Game::run() {
-    this->window.setFramerateLimit(60); // Kontrol FPS di sini (tiap frame ~16.6ms)
+    this->window.setFramerateLimit(60); // Kontrol FPS di sini 
     
     srand(static_cast<unsigned>(time(nullptr))); // seed random untuk posisi Y enemy
 
@@ -51,7 +37,7 @@ void Game::run() {
             }
         }
 
-        // --- Update state aktif (tiap frame = tiap ~16.6ms di 60fps) ---
+        // --- Update state aktif  ---
         current_state->update();
 
         // --- Cek apakah state ingin transisi ---
